@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li  class="alert alert-secondary" role="alert">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <h1>
+            <img style="height: 35px;" src="/static/images/Gnome-document-save.svg" alt="" srcset=""> Télécharger un rapport JSON
+        </h1>
+        <form class="mb-3" method="POST" enctype=multipart/form-data >
+            <label for="formFileSm" class="form-label">Séléctionnez votre rapport (format .json obligatoire)</label>
+            <input class="form-control form-control-sm" id="rapport" name="rapport" type="file" accept=".json">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="submit" value="Télécharger"  class="btn btn-success mt-3">
+        </form>
+    </div>
+{% endblock %}

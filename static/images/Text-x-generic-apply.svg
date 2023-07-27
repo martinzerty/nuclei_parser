@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48">
+<defs>
+<radialGradient id="f" gradientUnits="userSpaceOnUse" cy="3.76" cx="8.82" gradientTransform="matrix(.968 0 0 1.033 3.35-.35)" r="37.75">
+<stop stop-color="#a3a3a3" offset="0"/>
+<stop stop-color="#4c4c4c" offset="1"/>
+</radialGradient>
+<radialGradient id="a" gradientUnits="userSpaceOnUse" cy="42.1" cx="24.31" gradientTransform="matrix(1 0 0 .285.11 29.72)" r="15.82">
+<stop offset="0"/>
+<stop stop-opacity="0" offset="1"/>
+</radialGradient>
+<radialGradient id="h" gradientUnits="userSpaceOnUse" cy="29.3" cx="10.1" r="1.21">
+<stop stop-color="#f0f0f0" offset="0"/>
+<stop stop-color="#9a9a9a" offset="1"/>
+</radialGradient>
+<radialGradient id="j" gradientUnits="userSpaceOnUse" cy="8.78" cx="8.78" r="8.79">
+<stop stop-color="#fff" offset="0"/>
+<stop stop-opacity=".89" stop-color="#fff520" offset=".5"/>
+<stop stop-opacity="0" stop-color="#fff300" offset="1"/>
+</radialGradient>
+<radialGradient id="d" gradientUnits="userSpaceOnUse" cy="7.27" cx="8.14" gradientTransform="matrix(.968 0 0 1.033 3.35-.35)" r="38.2">
+<stop stop-color="#fff" offset="0"/>
+<stop stop-color="#f8f8f8" offset="1"/>
+</radialGradient>
+<radialGradient id="e" gradientUnits="userSpaceOnUse" cy="35.74" cx="33.97" gradientTransform="matrix(.96 0 0 1.041 0-1)" r="86.7">
+<stop stop-color="#fafafa" offset="0"/>
+<stop stop-color="#bbb" offset="1"/>
+</radialGradient>
+<linearGradient id="c" y2="24.53" gradientUnits="userSpaceOnUse" y1="-5.41" x2="-91" x1="-83.8">
+<stop stop-color="#a7cc5c" offset="0"/>
+<stop stop-color="#789e2d" offset="1"/>
+</linearGradient>
+</defs>
+<use opacity=".6" xlink:href="#g" transform="translate(6.76 1.79)" height="48" width="48" y="0" x="0"/>
+<ellipse id="g" opacity=".78" fill-rule="evenodd" rx="15.82" ry="4.51" cy="41.7" cx="24.42" fill="url(#a)"/>
+<g stroke-linejoin="round" stroke-linecap="round">
+<rect rx="1.15" height="40.92" width="34.88" stroke="url(#f)" y="2.65" x="6.6" fill="url(#e)"/>
+<rect rx=".15" height="38.95" width="32.78" stroke="url(#d)" y="3.58" x="7.67" fill="none"/>
+</g>
+<g id="b">
+<circle cy="29.2" cx="10.17" r=".82" fill="#fff"/>
+<path d="m10.64 28.91c0 0.45-0.37 0.82-0.82 0.82s-0.82-0.37-0.82-0.82 0.37-0.82 0.82-0.82 0.82 0.37 0.82 0.82" fill="url(#h)"/>
+</g>
+<g fill="none">
+<path stroke="#000" d="m11.51 4.49v37.91" stroke-opacity=".02"/>
+<path stroke="#fff" d="m12.5 4v38" stroke-opacity=".2"/>
+</g>
+<g fill="#9b9b9b" fill-opacity=".55">
+<rect rx=".14" ry=".07" height="1" width="20" y="8" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="10" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="12" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="14" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="16" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="18" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="20" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="22" x="16"/>
+<rect rx=".06" height="1" width="9" y="24" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="28" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="30" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="32" x="16"/>
+<rect rx=".14" ry=".07" height="1" width="20" y="34" x="16"/>
+<rect rx=".1" ry=".07" height="1" width="14" y="36" x="16"/>
+</g>
+<circle cy="8.79" cx="8.79" r="8.79" fill="url(#j)"/>
+<use y="-11.47" width="48" xlink:href="#b" height="48"/>
+<g stroke-linejoin="round" transform="matrix(.8259 -.1973 .1973 .8259 103 6.132)" stroke-linecap="round" stroke-width="1.174">
+<path d="m-73.88-4.63c-0.51-0.18-1.09-0.05-1.47 0.38l-16.38 18.1-5.93-7.58c-0.57-0.51-1.44-0.48-1.95 0.09l-4.3 3.43c-0.51 0.57-0.47 1.44 0.1 1.95 0 0 10.73 14.25 10.75 14.26 0.13 0.12 0.28 0.2 0.44 0.26 0.51 0.19 1.12 0.07 1.51-0.36l22.1-24.43c0.51-0.57 0.47-1.44-0.1-1.95l-4.28-3.89c-0.14-0.13-0.31-0.22-0.48-0.28z" stroke="#42770c" fill="url(#c)"/>
+<path opacity="0.48" d="m-74.98-3.2-8.31 9.22-7.38 8.12c-0.21 0.13-0.28 0.67-1.05 0.69-0.53 0.001-0.58-0.2-1.02-0.67l-5.24-6.65c-0.58-0.75-0.57-0.71-1.2-0.32l-3.37 2.65c-0.88 0.58-0.88 1.06-0.14 1.83 0 0 9.75 12.93 9.77 12.95 0.13 0.11 0.06 0.13 0.58 0.71 0.33 0.37 0.89-0.42 1.26-0.83l21.29-23.44c0.48-0.53 0.45-0.53-0.08-1.02l-3.85-3.39c-0.55-0.5-0.56-0.49-1.2 0.16z" stroke="#fff" fill="none"/>
+</g>
+</svg>

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+    {% block content %}
+    <script>
+        function toggle(el) {
+            var value = el.options[el.selectedIndex].value
+            var searchParams = new URLSearchParams(window.location.search);
+            searchParams.set('sort', value)
+            var newParams = searchParams.toString()
+            document.location.href = "/scan?" + newParams
+        }
+    </script>
+    <div class="container" style="margin-bottom: 30px;">
+        <h1>
+            Rapport de <code>{{file}}</code>
+        </h1>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <div>
+                Gravité :
+                <span class="badge rounded-pill text-bg-info">Info</span>
+                <span class="badge rounded-pill text-bg-primary">Low</span>
+                <span class="badge rounded-pill text-bg-warning">Medium</span>
+                <span class="badge rounded-pill text-bg-danger">High</span>
+                <span class="badge rounded-pill text-bg-dark">Critical</span>
+            </div>
+            <div>
+                <a href="/download/{{file}}" title="Télécharger le fichier CSV associé" type="button" class="btn btn-primary btn-sm"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Télécharger au format CSV."
+                >Télécharger <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"/>
+                    <path fill-rule="evenodd" d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
+                  </svg></a>
+            </div>
+        </div>
+
+
+        <ul>
+            <div class="m-5">
+                <b>
+                    Trier par :
+                </b>
+                <br>
+                <select class="form-select" aria-label="Default select example" id="sort-select"
+                    onchange="toggle(this)">
+                    <option selected value="order">Ordre fichier</option>
+                    <option value="severity">Grâvité</option>
+                    <option value="techno">Technologie</option>
+                    <option value="name">Nom</option>
+                </select>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <b>{{ data|length }}</b> vulnérabilité(s) trouvée(s)
+                    </div>
+                    
+                    <div class="card-text">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Gravité</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Template</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set counter = 1 %}
+                                {% for element in data %}
+                                {% include 'chunks/'+element['type']+".html" %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </ul>
+    </div>
+
+<script>
+    var searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.has('sort')) {
+        document.getElementById('sort-select').value = searchParams.get('sort');
+    }
+
+</script>
+    {% endblock %}

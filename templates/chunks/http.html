@@ -1,0 +1,150 @@
+<tr>
+    <td>
+        <small class="d-inline-flex px-2 py-1 rounded-pill fw-semibold text-success-emphasis bg-{{ severity_dict[element['info']['severity']] }}-subtle border border-{{ severity_dict[element['info']['severity']] }}-subtle rounded-2 me-2">
+            {{ element['info']['severity'] }}
+        </small>
+    </td>
+    <td style="margin-top: 20px; width: 50vw;">
+        {% if 'template-id' in element %}
+        <div class="" data-bs-toggle="collapse" href="#{{element['template-id']}}{% if 'matcher-name' in element %}_{{ element['matcher-name'] }}{% endif %}" role="button" aria-expanded="false"
+            aria-controls="{{element['template-id']}}{% if 'matcher-name' in element %}_{{ element['matcher-name'] }}{% endif %}">
+            {{element['info']['name']}} {% if 'matcher-name' in element %}
+            - {{ element['matcher-name'] }}
+           {% endif %}
+        </div>
+
+        <div class="collapse" id="{{element['template-id']}}{% if 'matcher-name' in element %}_{{ element['matcher-name'] }}{% endif %}">
+            <!-- ELSE -->
+            {% else %}
+            <a class="" data-bs-toggle="collapse" href="#no_id-{{counter}}" role="button" aria-expanded="false"
+                aria-controls="no_id-{{counter}}">
+                {{element['info']['name']}}
+            </a>
+            <div class="collapse" id="no_id-{{counter}}">
+                {% set counter = counter + 1 %}
+                {% endif %}
+                <div class="card m-3" style="max-width: 50vw;">
+                    <div class="card-header">
+                        {{element['info']['name']}} 
+                        
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Vulnérabilité détectée</h5>
+                        <p class="card-text">
+                        <table class="table">
+                            
+                            <thead>
+                                <tr>
+                                    <th scope="col">Gravité</th>
+                                    <th scope="col">Tags</th>
+                                    <th scope="col">Type</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr>
+                                    <td>{{element['info']['severity']}}</td>
+                                    <td>
+                                        {% if element['info']['tags'] != None %}
+                                        {% for tag in element['info']['tags']%}
+                                        <span class="badge text-bg-success">{{tag}}</span>
+                                        {% endfor %}
+                                        {% else %}
+                                        <span class="badge text-bg-secondary">Aucun tag associé</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {{element['type']}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <b>Template</b>
+                        <br>
+                        <code>
+                            {{element['template-path']}}
+                        </code>
+                        {% if "template-url" in element %}
+                        <span id="template-description-{{element['template-id']}}">
+
+                        </span>
+                        <script>
+
+                            var template_url = "{{element['template-url']}}"
+                            var template_downlad = template_url;
+                            if (template_url.startsWith('https://github.com')) {
+                                template_downlad = template_downlad.replace('github.com', 'raw.githubusercontent.com')
+                                template_downlad = template_downlad.replace('/blob/', '/')
+                                template_downlad = template_downlad.replace('github.com', 'raw.githubusercontent.com')
+                            }
+
+                            var entry = {
+                                path: template_downlad
+                            }
+
+                            fetch(
+                                `${window.origin}/to-json`, {
+                                method: 'POST',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                                },
+                                body: JSON.stringify(entry)
+                            }
+                            ).then(response => response.text())
+                                .then(
+                                    data => {
+                                        if ('description' in data) {
+                                            document.getElementById("template-description-{{element['template-id']}}").innerText = data['info']['description']
+                                        }
+                                        else {
+                                            document.getElementById("template-description-{{element['template-id']}}").innerText = 'Aucune description disponible'
+                                        }
+                                    }
+                                )
+
+                        </script>
+
+                        > <a target="_blank"
+                            href="{{element['template-url']}}">{{element['template-url'].split('/')[2]}}</a>
+
+                        <hr>
+                        <b>
+                            Description
+                        </b>
+                        <br>
+                        <span>
+                            {{element['info']['description']}}
+                        </span>
+                        {% endif %}
+                        <hr>
+                        <b>Sur l'hôte :</b>
+                        <br>
+                        <a target="_blank" href="{{ element['matched-at'] }}">{{element['matched-at']}}</a>
+
+                        {% if "matcher" in element %}
+
+                        <b>Matcher</b>
+                        <br>
+
+                        {% endif %}
+                        </p>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        {{ element['timestamp'] }}
+                    </div>
+                </div>
+            </div>
+    </td>
+    <td>
+        <a class="btn btn-outline-primary" href="{{element['template-url']}}" target="_blank" title="Lien vers le template utilisé">
+            Template <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-folder-symlink" viewBox="0 0 16 16">
+                <path
+                    d="m11.798 8.271-3.182 1.97c-.27.166-.616-.036-.616-.372V9.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742z" />
+                <path
+                    d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm.694 2.09A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09l-.636 7a1 1 0 0 1-.996.91H2.826a1 1 0 0 1-.995-.91l-.637-7zM6.172 2a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z" />
+            </svg>
+        </a>
+    </td>
+</tr>

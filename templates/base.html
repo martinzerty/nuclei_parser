@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <link rel="stylesheet" href="/static/style/bootstrap.min.css">
+    <script src="/static/script/bootstrap.bundle.min.js"></script>
+    <script src="/static/script/require_js.js"></script>
+</head>
+
+<body>
+    <header class=" mb-3 border-bottom" style="background-color: #dd5220; color: white !important;">
+        <nav class="navbar" style="padding: 0 !important;">
+            <div class="container">
+                <a class="navbar-brand" style="color: white !important; font-weight: bold;" href="/"><b>Nuclei Parser</b></a>
+                <div>
+                    <ul class="nav d-flex" style="vertical-align: middle;">
+                        <li><a href="/upload" class="nav-link px-5 link-body-emphasis" style="color: white !important; font-weight: bold;">
+                            Télécharger</a>
+                        </li>
+                        <li><a href="/scan" style="color: white !important; font-weight: bold;" class="nav-link px-5 link-body-emphasis">
+                            Liste</a>
+                        </li>
+                    </ul>
+                </div>
+                <img src="/static/procapital.png" alt="" srcset="" style="height:70px; padding: 0 !important;"
+                    class="navbar-brand">
+
+            </div>
+        </nav>
+
+    </header>
+    {% block content %}{% endblock %}
+</body>
+
+</html>
